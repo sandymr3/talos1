@@ -62,7 +62,8 @@ export default function WorkshopsPage() {
                 <Image
                   src={WORKSHOP_IMAGES[workshop.workshop_id] || workshop.image_url}
                   alt={workshop.title}
-                  className="size-full rounded-2xl object-cover shadow-2xl shadow-black/40"
+                  fill
+                  className="rounded-2xl object-cover shadow-2xl shadow-black/40"
                 />
                 <div className="absolute inset-0 bg-black/30 rounded-2xl" />
                 <div className="absolute bottom-4 left-4 text-3xl font-bold text-white drop-shadow-md zen-dots-regular">
