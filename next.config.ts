@@ -6,10 +6,6 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
 
-  // React Compiler disabled - causes Turbopack issues
-  // reactCompiler: true,
-
-  // Optimize images
   images: {
     remotePatterns: [
       {

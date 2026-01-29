@@ -50,15 +50,15 @@ export default function GalleryPage() {
         </div>
 
         {/* Right Half: 4 Static Pictures (2x2 Grid) */}
-        <div className="grid grid-cols-2 gap-4 h-full">
+        <div className="grid grid-cols-2 gap-4 h-full min-h-[500px]">
           {staticImages.map((src, i) => (
-            <div key={i} className="relative rounded-xl overflow-hidden border border-white/10 group bg-black">
+            <div key={i} className="relative rounded-xl overflow-hidden border border-white/10 group bg-black aspect-square">
               <div className="absolute inset-0 bg-red-900/10 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none" />
               <Image
                 src={src}
                 alt={`Gallery Static ${i + 1}`}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
             </div>
