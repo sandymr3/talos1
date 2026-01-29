@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FlipCard } from "@/components/ui/FlipCard";
 import type { Event } from "@/lib/api";
 import eventsData from "@/events.json";
-
+import Image from "next/image";
 export default function EventsPage() {
   const events: Event[] = eventsData as Event[];
 
@@ -47,7 +47,7 @@ export default function EventsPage() {
       }
     >
       <div className="relative h-full w-full">
-        <img
+        <Image
           src={event.image_url}
           alt={event.title}
           className="size-full rounded-2xl object-cover shadow-2xl shadow-black/40"

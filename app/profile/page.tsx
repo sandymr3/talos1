@@ -7,6 +7,7 @@ import PageSection from "@/components/_core/layout/PageSection";
 import { api, type User, type EventRegistration, type WorkshopRegistration } from "@/lib/api";
 import { useAuth } from "@/hooks/useAuth";
 import { auth } from "@/lib/firebase";
+import Image from "next/image";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -115,7 +116,7 @@ export default function ProfilePage() {
         <div className="bg-muted/20 rounded-xl p-6 border border-white/10 backdrop-blur-sm">
           <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
             {(profile?.profile_photo || (firebaseUser && firebaseUser.photoURL)) ? (
-              <img
+              <Image
                 src={profile?.profile_photo || (firebaseUser?.photoURL ?? "")}
                 alt="Profile"
                 className="w-20 h-20 rounded-full border-2 border-red-600"

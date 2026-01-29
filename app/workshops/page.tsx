@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FlipCard } from "@/components/ui/FlipCard";
 import type { Workshop } from "@/lib/api";
 import workshopsData from "@/workshops.json";
+import Image from "next/image";
 
 const WORKSHOP_IMAGES: Record<string, string> = {
   "byog-workshop": "/images/workshop-images/Build Your own Game.jpg",
@@ -58,7 +59,7 @@ export default function WorkshopsPage() {
               }
             >
               <div className="relative h-full w-full">
-                <img
+                <Image
                   src={WORKSHOP_IMAGES[workshop.workshop_id] || workshop.image_url}
                   alt={workshop.title}
                   className="size-full rounded-2xl object-cover shadow-2xl shadow-black/40"

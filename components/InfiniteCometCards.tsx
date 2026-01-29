@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import { CometCard } from "@/components/ui/comet-card";
 import { useInView } from "motion/react";
-
+import Image from "next/image";
 type CardItem = {
   title: string;
   desc: string;
@@ -54,7 +54,7 @@ export function InfiniteCometCards({
                 
                 {/* Image */}
                 <div className="h-[180px] w-full overflow-hidden">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
                     className="h-full w-full object-cover opacity-90"
