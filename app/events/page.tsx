@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FlipCard } from "@/components/ui/FlipCard";
 import type { Event } from "@/lib/api";
 import eventsData from "@/events.json";
-
+import Image from "next/image";
 export default function EventsPage() {
   const events: Event[] = eventsData as Event[];
 
@@ -36,8 +36,8 @@ export default function EventsPage() {
             <span className="w-fit text-xs font-mono text-red-500 bg-red-500/10 px-2 py-1 rounded">
               {event.date}, {event.time}
             </span>
-            <Link 
-              href={`/events/${event.event_id}`} 
+            <Link
+              href={`/events/${event.event_id}`}
               className="w-full text-center px-4 py-2 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-colors zen-dots-regular text-lg"
             >
               View Details
@@ -47,10 +47,11 @@ export default function EventsPage() {
       }
     >
       <div className="relative h-full w-full">
-        <img
+        <Image
           src={event.image_url}
           alt={event.title}
-          className="size-full rounded-2xl object-cover shadow-2xl shadow-black/40"
+          fill
+          className="rounded-2xl object-cover shadow-2xl shadow-black/40"
         />
         <div className="absolute inset-0 bg-black/30 rounded-2xl" />
         <div className="absolute bottom-4 left-4 text-3xl font-bold text-white drop-shadow-md zen-dots-regular">

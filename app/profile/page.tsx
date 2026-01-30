@@ -7,6 +7,7 @@ import PageSection from "@/components/_core/layout/PageSection";
 import { api, type User, type EventRegistration, type WorkshopRegistration } from "@/lib/api";
 import { useAuth } from "@/hooks/useAuth";
 import { auth } from "@/lib/firebase";
+import Image from "next/image";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function ProfilePage() {
   useEffect(() => {
     // Wait for auth to fully complete before doing anything
     if (authLoading) return;
-    
+
     if (!firebaseUser) {
       router.push("/login");
       return;
@@ -115,10 +116,12 @@ export default function ProfilePage() {
         <div className="bg-muted/20 rounded-xl p-6 border border-white/10 backdrop-blur-sm">
           <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
             {(profile?.profile_photo || (firebaseUser && firebaseUser.photoURL)) ? (
-              <img
+              <Image
                 src={profile?.profile_photo || (firebaseUser?.photoURL ?? "")}
                 alt="Profile"
-                className="w-20 h-20 rounded-full border-2 border-red-600"
+                width={80}
+                height={80}
+                className="rounded-full border-2 border-red-600"
               />
             ) : (
               <div className="w-20 h-20 rounded-full bg-red-600/20 flex items-center justify-center border-2 border-red-600">
@@ -162,40 +165,40 @@ export default function ProfilePage() {
           ) : (
             <div className="space-y-4">
               {eventRegistrations
-                .filter((reg, index, self) => 
+                .filter((reg, index, self) =>
                   index === self.findIndex(r => r.registration_id === reg.registration_id)
                 )
                 .map((reg) => (
-                <div
-                  key={reg.registration_id}
-                  className="bg-black/30 rounded-lg p-4 border border-white/5"
-                >
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="text-white font-bold">{reg.event_name || reg.event_id || 'Unknown Event'}</p>
-                      <p className="text-gray-400 text-sm">Team: {reg.team_name}</p>
-                      <p className="text-gray-400 text-sm">Leader: {reg.leader_name}</p>
-                      {reg.members && reg.members.length > 0 && (
-                        <p className="text-gray-500 text-xs mt-1">
-                          Members: {reg.members.map((m: { name?: string }) => m.name || '').filter(Boolean).join(', ')}
-                        </p>
-                      )}
-                      <p className="text-gray-500 text-xs mt-1">ID: {reg.registration_id}</p>
+                  <div
+                    key={reg.registration_id}
+                    className="bg-black/30 rounded-lg p-4 border border-white/5"
+                  >
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <p className="text-white font-bold">{reg.event_name || reg.event_id || 'Unknown Event'}</p>
+                        <p className="text-gray-400 text-sm">Team: {reg.team_name}</p>
+                        <p className="text-gray-400 text-sm">Leader: {reg.leader_name}</p>
+                        {reg.members && reg.members.length > 0 && (
+                          <p className="text-gray-500 text-xs mt-1">
+                            Members: {reg.members.map((m: { name?: string }) => m.name || '').filter(Boolean).join(', ')}
+                          </p>
+                        )}
+                        <p className="text-gray-500 text-xs mt-1">ID: {reg.registration_id}</p>
+                      </div>
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-bold ${reg.status === "confirmed"
+                          ? "bg-green-600/20 text-green-500"
+                          : "bg-yellow-600/20 text-yellow-500"
+                          }`}
+                      >
+                        {reg.status}
+                      </span>
                     </div>
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-bold ${reg.status === "confirmed"
-                        ? "bg-green-600/20 text-green-500"
-                        : "bg-yellow-600/20 text-yellow-500"
-                        }`}
-                    >
-                      {reg.status}
-                    </span>
+                    <p className="text-gray-500 text-xs mt-2">
+                      Registered: {new Date(reg.registered_at).toLocaleString()}
+                    </p>
                   </div>
-                  <p className="text-gray-500 text-xs mt-2">
-                    Registered: {new Date(reg.registered_at).toLocaleString()}
-                  </p>
-                </div>
-              ))}
+                ))}
             </div>
           )}
         </div>
@@ -210,37 +213,37 @@ export default function ProfilePage() {
           ) : (
             <div className="space-y-4">
               {workshopRegistrations
-                .filter((reg, index, self) => 
+                .filter((reg, index, self) =>
                   index === self.findIndex(r => r.registration_id === reg.registration_id)
                 )
                 .map((reg) => (
-                <div
-                  key={reg.registration_id}
-                  className="bg-black/30 rounded-lg p-4 border border-white/5"
-                >
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="text-white font-bold">{reg.workshop_name || reg.workshop_id}</p>
-                      <p className="text-gray-400 text-sm">Participant: {reg.name}</p>
-                      <p className="text-gray-400 text-sm">Amount: ₹{reg.amount}</p>
-                      <p className="text-gray-400 text-sm">
-                        Payment: {reg.payment_status}
-                      </p>
+                  <div
+                    key={reg.registration_id}
+                    className="bg-black/30 rounded-lg p-4 border border-white/5"
+                  >
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <p className="text-white font-bold">{reg.workshop_name || reg.workshop_id}</p>
+                        <p className="text-gray-400 text-sm">Participant: {reg.name}</p>
+                        <p className="text-gray-400 text-sm">Amount: ₹{reg.amount}</p>
+                        <p className="text-gray-400 text-sm">
+                          Payment: {reg.payment_status}
+                        </p>
+                      </div>
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-bold ${reg.status === "confirmed"
+                          ? "bg-green-600/20 text-green-500"
+                          : "bg-yellow-600/20 text-yellow-500"
+                          }`}
+                      >
+                        {reg.status}
+                      </span>
                     </div>
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-bold ${reg.status === "confirmed"
-                        ? "bg-green-600/20 text-green-500"
-                        : "bg-yellow-600/20 text-yellow-500"
-                        }`}
-                    >
-                      {reg.status}
-                    </span>
+                    <p className="text-gray-500 text-xs mt-2">
+                      Registered: {new Date(reg.registered_at).toLocaleString()}
+                    </p>
                   </div>
-                  <p className="text-gray-500 text-xs mt-2">
-                    Registered: {new Date(reg.registered_at).toLocaleString()}
-                  </p>
-                </div>
-              ))}
+                ))}
             </div>
           )}
         </div>
