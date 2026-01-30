@@ -2,28 +2,28 @@ import ParallaxScrollGallery from '@/components/ui/ParallaxScrollGallery';
 import Image from 'next/image';
 export default function GalleryPage() {
   const trailImages = [
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613265/event1_xqrnqy.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613261/event2_wfobnu.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613262/inaugration_fehtjb.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613244/paperpresentation_twrgnd.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613244/paperpresentation_twrgnd.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613259/promptopia_tpxqb9.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613269/workshop1_xygefk.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613282/nontech1_tbt5x0.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613268/students_j3fpya.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613282/nontech1_tbt5x0.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613240/crew_lmtwuj.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613256/partha1_apwiif.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613249/partha2_jm1suv.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613237/guest_esxzba.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613260/promptopia2_mycval.jpg"
+    "/images/event1.JPG",
+    "/images/event2.JPG",
+    "/images/inaugration.JPG",
+    "/images/paperpresentation.JPG",
+    "/images/plotathon.JPG",
+    "/images/promptopia.jpeg",
+    "/images/workshop1.JPG",
+    "/images/nontech1.JPG",
+    "/images/students.JPG",
+    "/images/students1.JPG",
+    "/images/crew.JPG",
+    "/images/partha1.JPG",
+    "/images/partha2.JPG",
+    "/images/guest.JPG",
+    "/images/promptopia2.jpeg"
   ];
 
   const staticImages = [
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613261/Chairman_kdbzrm.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613273/head_hybslj.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613274/HOD_gdb4uq.jpg",
-    "https://res.cloudinary.com/dkvvu8tac/image/upload/v1769613259/pongal_ze2frc.jpg"
+    "/images/Chairman.JPG",
+    "/images/head.JPG",
+    "/images/HOD.JPG",
+    "/images/pongal.jpeg"
   ];
 
   return (
