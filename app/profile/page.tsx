@@ -231,12 +231,12 @@ export default function ProfilePage() {
                         </p>
                       </div>
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-bold ${reg.status === "confirmed"
+                        className={`px-3 py-1 rounded-full text-xs font-bold ${reg.payment_status === "confirmed"
                           ? "bg-green-600/20 text-green-500"
                           : "bg-yellow-600/20 text-yellow-500"
                           }`}
                       >
-                        {reg.status}
+                        {reg.payment_status}
                       </span>
                     </div>
                     <p className="text-gray-500 text-xs mt-2">
