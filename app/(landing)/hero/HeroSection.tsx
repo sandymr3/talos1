@@ -9,11 +9,9 @@ import HudBackground from '@/components/ui/HudBackground';
 
 export default function HeroSection() {
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
-
   const handleAnimationComplete = useCallback(() => {
     setIsAnimationComplete(true);
   }, []);
-
   return (
     <section className='relative h-screen flex items-center justify-center overflow-hidden'>
       <HudBackground opacity={0.6} showMap={true} />

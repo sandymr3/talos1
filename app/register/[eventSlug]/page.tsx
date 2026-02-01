@@ -308,6 +308,40 @@ export default function EventRegistrationPage() {
     return null;
   }
 
+  if (eventData?.status === 'closed') {
+    return (
+      <PageSection title={`Register - ${eventData.title}`} className="min-h-screen font-sans">
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-gradient-to-br from-gray-950/30 to-black/50 backdrop-blur-sm border border-gray-900/30 rounded-2xl p-8 shadow-2xl text-center">
+            <div className="mb-6">
+              <svg className="w-20 h-20 mx-auto text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <h2 className="text-3xl font-bold text-white mb-4">Registration Closed</h2>
+            <p className="text-gray-300 mb-6 text-lg">
+              Registration for {eventData.title} is no longer available.
+            </p>
+            <div className="flex gap-4 justify-center">
+              <button
+                onClick={() => router.push('/events')}
+                className="px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-all"
+              >
+                Browse Other Events
+              </button>
+              <button
+                onClick={() => router.push('/')}
+                className="px-6 py-3 bg-gray-600 text-white rounded-lg font-semibold hover:bg-gray-700 transition-all"
+              >
+                Back to Home
+              </button>
+            </div>
+          </div>
+        </div>
+      </PageSection>
+    );
+  }
+
   if (alreadyRegistered) {
     return (
       <PageSection title={`Register - ${eventData.title}`} className="min-h-screen font-sans">

@@ -15,15 +15,16 @@ interface CarouselItem {
 
 interface DraggableEventsCarouselProps {
   items: CarouselItem[];
+  basePath?: string;
 }
 
-export default function DraggableEventsCarousel({ items }: DraggableEventsCarouselProps) {
+export default function DraggableEventsCarousel({ items, basePath = "/events" }: DraggableEventsCarouselProps) {
   return (
     <div className="relative w-full py-20">
       <div className="flex flex-wrap justify-center gap-8 px-4">
         {items.map((item, index) => (
           <DraggableCardContainer key={index}>
-            <Link href={`/events/${item.slug}`} className="block h-full w-full">
+            <Link href={`${basePath}/${item.slug}`} className="block h-full w-full">
               <DraggableCardBody className="w-80 h-96 bg-black hover:border-white transition-colors duration-300 p-0 shadow-[0_0_5px_rgba(220,38,38,0.6)]">
                 <div className="relative w-full h-full">
                   <Image

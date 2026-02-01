@@ -142,11 +142,11 @@ export async function getUserWorkshopRegistrations(userEmail: string): Promise<u
       
       const registrationsRef = collection(db, `${workshopId}_registrations`);
       
-      // Search by email and confirmed status
+      // Search by email and confirmed payment status
       const q = query(
         registrationsRef, 
         where('email', '==', userEmail),
-        where('status', '==', 'confirmed')
+        where('payment_status', '==', 'confirmed')
       );
       const registrationsSnapshot = await getDocs(q);
       console.log(`Found ${registrationsSnapshot.size} registrations for ${workshopId}`);

@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import { CometCard } from "@/components/ui/comet-card";
 import { useInView } from "motion/react";
-
+import Image from "next/image";
 type CardItem = {
   title: string;
   desc: string;
@@ -51,13 +51,14 @@ export function InfiniteCometCards({
           {loopItems.map((item, idx) => (
             <CometCard key={idx}>
               <div className="w-[460px] rounded-2xl overflow-hidden border border-white/10 bg-black/85 backdrop-blur-xl">
-                
+
                 {/* Image */}
-                <div className="h-[180px] w-full overflow-hidden">
-                  <img
+                <div className="relative h-[180px] w-full overflow-hidden">
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="h-full w-full object-cover opacity-90"
+                    fill
+                    className="object-cover opacity-90"
                   />
                 </div>
 
